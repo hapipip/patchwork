@@ -1,6 +1,6 @@
 ## Interface
 
-Patchwork exports a single function `patch` accepting a String or an Array specifying the configuration paths you want aggregate.
+Pellmell exports a single function `patch` accepting a String or an Array specifying the configuration paths you want aggregate.
 
 ### `patch(basesDir)`
 
@@ -18,17 +18,17 @@ Loading without inheritance:
 
 ```javascript
 'use strict';
-const Patchwork = require('patchwork');
+const Pellmell = require('pellmell');
 const Path = require('path');
 
-const result = Patchwork.patch(Path.join(__dirname, 'your', 'path'));
+const result = Pellmell.patch(Path.join(__dirname, 'your', 'path'));
 ```
 
 Loading with inheritance:
 
 ```javascript
 'use strict';
-const Patchwork = require('patchwork');
+const Pellmell = require('pellmell');
 const Path = require('path');
 
 const paths = [
@@ -36,7 +36,7 @@ const paths = [
   Path.join(__dirname, 'your', 'path', '2')
 ];
 
-const result = Patchwork.patch(paths);
+const result = Pellmell.patch(paths);
 ```
 
 
@@ -44,7 +44,7 @@ Loading files using sanitize option:
 
 ```javascript
 'use strict';
-const Patchwork = require('patchwork');
+const Patchwork = require('pellmell');
 const Path = require('path');
 
 const mask = {

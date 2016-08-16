@@ -1,7 +1,7 @@
 {
-  "name": "patchwork",
+  "name": "pellmell",
   "version": "1.0.0",
-  "description": "Patchwork gathers all configuration files of one or multiple directories (regardless if it's a folder, a JSON file, a YAML file, or a JS module).",
+  "description": "Pellmell gathers all configuration files of one or multiple directories (regardless if it's a folder, a JSON file, a YAML file, or a JS module).",
   "main": "lib/index.js",
   "scripts": {
     "test": "lab -cCD test/index.js",

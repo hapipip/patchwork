@@ -1,7 +1,7 @@
 'use strict';
 
 const Lab =  require('lab');
-const Patchwork = require('../lib/index');
+const Pellmell = require('../lib/index');
 const Path = require('path');
 const {expect} = require('code');
 const {describe, it, before} = exports.lab = Lab.script();
@@ -23,7 +23,7 @@ describe('Test manifest building', () => {
       }
     };
 
-    const result = Patchwork.patch(__dirname + '/fixtures/test1');
+    const result = Pellmell.patch(__dirname + '/fixtures/test1');
 
     expect(result).to.equal(expected);
     done()
@@ -36,7 +36,7 @@ describe('Test manifest building', () => {
       Path.join(__dirname, 'fixtures', 'test2')
     ];
 
-    let result = Patchwork.patch(paths);
+    let result = Pellmell.patch(paths);
 
     expect(result).to.equal({
       a: {aa: 1},
@@ -53,7 +53,7 @@ describe('Test manifest building', () => {
 
 
 
-    result = Patchwork.patch([
+    result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2'),
       Path.join(__dirname, 'fixtures', 'test3')
@@ -94,7 +94,7 @@ describe('Test manifest building', () => {
       }
     };
 
-    const result = Patchwork.patch([
+    const result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2'),
       Path.join(__dirname, 'fixtures', 'test3')
