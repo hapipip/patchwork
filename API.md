@@ -2,7 +2,7 @@
 
 Pellmell exports a single function `patch` accepting a String or an Array specifying the configuration paths you want aggregate.
 
-### `patch(basesDir)`
+### `patch(paths, options)`
 
 Composes a hapi server object where:
 + `paths` - a String or an Array of paths folder valid

@@ -9,13 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hapipip/patchwork.git"
+    "url": "git+https://github.com/hapipip/pellmell.git"
   },
   "keywords": [
-    "glue",
-    "hapi",
-    "manifest generator",
-    "server"
+    "config files",
+    "config aggregate",
+    "multiple files type supported"
   ],
   "author": [
     "Clément Pasquier <clement@n00sphere.net>",
@@ -23,9 +22,9 @@
   ],
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
-    "url": "https://github.com/hapipip/patchwork/issues"
+    "url": "https://github.com/hapipip/pellmell/issues"
   },
-  "homepage": "https://github.com/hapipip/patchwork#readme",
+  "homepage": "https://github.com/hapipip/pellmell#readme",
   "devDependencies": {
     "code": "^3.0.2",
     "fsmonitor": "^0.2.4",
