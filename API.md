@@ -1,37 +1,66 @@
 ## Interface
 
-Uhu exports a single function `stick` accepting a String `path/to/the/manifest` specifying the Glue manifest for Hapi server configuration.
+Patchwork exports a single function `patch` accepting a String or an Array specifying the configuration paths you want aggregate.
 
-### `stick(baseDir)`
+### `patch(basesDir)`
 
 Composes a hapi server object where:
-+ `baseDir` - a folder path valid
++ `paths` - a String or an Array of paths folder valid
++ `options` - an options object with two  options `{sanitize: Object, isNullOverride: true/false}`
 
 ### Notes
 
-The config files can be YAML, JSON and JS
+The config files can be a folder, YAML, JSON and JS module
 
 ## Usage
 
+Loading without inheritance:
+
 ```javascript
 'use strict';
+const Patchwork = require('patchwork');
+const Path = require('path');
 
-const Glue = require('glue');
-const Uhu = require('uhu');
+const result = Patchwork.patch(Path.join(__dirname, 'your', 'path'));
+```
+
+Loading with inheritance:
+
+```javascript
+'use strict';
+const Patchwork = require('patchwork');
+const Path = require('path');
+
+const paths = [
+  Path.join(__dirname, 'your', 'path', '1'),
+  Path.join(__dirname, 'your', 'path', '2')
+];
+
+const result = Patchwork.patch(paths);
+```
 
 
-const options = {
-    relativeTo: __dirname
+Loading files using sanitize option:
+
+```javascript
+'use strict';
+const Patchwork = require('patchwork');
+const Path = require('path');
+
+const mask = {
+  My: {
+    object: true,
+    need: true,
+    to: {
+      be: {
+        like: true,
+        this: true
+      }
+    }
+  }
 };
 
-Glue.compose(Uhu.stick(__dirname + '/manifest'), options, (err, server) => {
+const paths = Path.join(__dirname, 'your', 'path');
 
-    if (err) {
-        throw err;
-    }
-    server.start(() => {
-
-        console.log('hapi days!');
-    });
-});
+const result = Patchwork.patch(paths, {sanitize: mask});
 ```
