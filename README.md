@@ -4,7 +4,7 @@
 
 ### Configuration files composer
 
-Pellmell gathers all configuration files of one or multiple directories (regardless if it's a folder, a JSON file, a YAML file, or a JS module).
+Pellmell patches configuration pieces into a single object.
 
 ### Interface
 
