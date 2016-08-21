@@ -4,7 +4,7 @@
   "description": "Pellmell gathers all configuration files of one or multiple directories (regardless if it's a folder, a JSON file, a YAML file, or a JS module).",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -cCD test/index.js",
+    "test": "lab -vcCD test/index.js",
     "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "repository": {
@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "joi": "^9.0.4",
-    "masks": "^1.0.3",
-    "require-yml": "^1.3.0"
+    "masks": "git+https://github.com/hapipip/masks#master",
+    "require-yml": "git+https://github.com/Gastonite/require-yml.git#master"
   },
   "engines": {
     "node": ">=6.x.x",
