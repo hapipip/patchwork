@@ -186,7 +186,7 @@ describe('Test manifest building', () => {
 
     let result = Pellmell.patch([
       Path.join(__dirname, '/fixtures/test1/'),
-      Path.join(__dirname, 'fixtures/test2')
+      Path.join(__dirname, '/fixtures/test2')
     ]);
 
     expect(result).to.equal({
@@ -201,5 +201,6 @@ describe('Test manifest building', () => {
         bb: {response: 42}
       }
     });
+    done();
   });
 });
