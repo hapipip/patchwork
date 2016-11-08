@@ -182,4 +182,25 @@ describe('Test manifest building', () => {
     done()
   });
 
+  it('issue#1 it should work with or without trailling slash', done => {
+
+    let result = Pellmell.patch([
+      Path.join(__dirname, '/fixtures/test1/'),
+      Path.join(__dirname, '/fixtures/test2')
+    ]);
+
+    expect(result).to.equal({
+      a: {aa: 1},
+      b: {
+        ba: {
+          baa: {
+            baaa: true
+          },
+          bab: {baba: 'cool'}
+        },
+        bb: {response: 42}
+      }
+    });
+    done();
+  });
 });
