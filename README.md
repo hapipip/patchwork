@@ -1,6 +1,7 @@
 # Pellmell
 
 [![Build Status](https://travis-ci.org/hapipip/pellmell.svg)](https://travis-ci.org/hapipip/pellmell)
+[![codecov](https://codecov.io/gh/hapipip/pellmell/branch/master/graph/badge.svg)](https://codecov.io/gh/hapipip/pellmell)
 
 ### Configuration files composer
 
