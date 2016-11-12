@@ -1,3 +1,3 @@
-module.exports = function () {
-  return "co" + "ol"
+module.exports = () => {
+  return "cool"
 };
