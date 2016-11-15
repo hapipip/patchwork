@@ -1,10 +1,10 @@
 'use strict';
 
 const Lab =  require('lab');
-const Pellmell = require('../lib/index');
+const Pellmell = require('../lib');
 const Path = require('path');
 const {expect} = require('code');
-const {describe, it, before} = exports.lab = Lab.script();
+const {describe, it} = exports.lab = Lab.script();
 
 describe('Test manifest building', () => {
 
@@ -21,6 +21,24 @@ describe('Test manifest building', () => {
     expect(result).to.equal({
       a: 1,
       b: 2,
+      c: 3
+    });
+    done()
+  });
+
+  it('should merge simple pieces (with factory option)', done => {
+
+    const pieces = [
+      {a: 1, c: 3},
+      {b: 2},
+      param => ({c: 41 + param})
+    ];
+
+    const result = Pellmell.patch(pieces, {factory: [1]});
+
+    expect(result).to.equal({
+      a: 1,
+      b: 2,
       c: 42
     });
     done()
@@ -28,7 +46,7 @@ describe('Test manifest building', () => {
 
   it('should transform one directory of config files to a single object', done => {
 
-    const result = Pellmell.patch(__dirname + '/fixtures/test1');
+    const result = Pellmell.patch(__dirname + '/fixtures/test1', {factory: true});
 
     expect(result).to.equal({
       a: ['cat', 'dog', 'fish'],
@@ -52,7 +70,7 @@ describe('Test manifest building', () => {
     let result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2')
-    ]);
+    ], {factory: true});
 
     expect(result).to.equal({
       a: {aa: 1},
@@ -72,8 +90,8 @@ describe('Test manifest building', () => {
     result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2'),
-      Path.join(__dirname, 'fixtures', 'test3')
-    ]);
+      Path.join(__dirname, 'fixtures', 'test3.js')
+    ], {factory: true});
 
 
     expect(result).to.equal({
@@ -104,7 +122,7 @@ describe('Test manifest building', () => {
       {a: 1},
       {a: 2},
       () => ({b: {bb: 42}})
-    ]);
+    ], {factory: true});
 
     expect(result).to.equal({
       a: 2,
@@ -124,8 +142,8 @@ describe('Test manifest building', () => {
     result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2'),
-      Path.join(__dirname, 'fixtures', 'test3')
-    ]);
+      Path.join(__dirname, 'fixtures', 'test3.js')
+    ], {factory: true});
 
     expect(result).to.equal({
       a: {aa: 1},
@@ -165,7 +183,7 @@ describe('Test manifest building', () => {
     const result = Pellmell.patch([
       Path.join(__dirname, 'fixtures', 'test1'),
       Path.join(__dirname, 'fixtures', 'test2'),
-      Path.join(__dirname, 'fixtures', 'test3')
+      Path.join(__dirname, 'fixtures', 'test3.js')
     ], {sanitize: mask});
 
     expect(result).to.equal({
@@ -182,12 +200,12 @@ describe('Test manifest building', () => {
     done()
   });
 
-  it('issue#1 it should work with or without trailling slash', done => {
+  it('should work with or without trailing slash (issue#1)', done => {
 
     let result = Pellmell.patch([
       Path.join(__dirname, '/fixtures/test1/'),
       Path.join(__dirname, '/fixtures/test2')
-    ]);
+    ], {factory: true});
 
     expect(result).to.equal({
       a: {aa: 1},

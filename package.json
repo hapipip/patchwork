@@ -2,9 +2,10 @@
   "name": "pellmell",
   "version": "1.0.0",
   "description": "Pellmell gathers all configuration files of one or multiple directories (regardless if it's a folder, a JSON file, a YAML file, or a JS module).",
-  "main": "lib/index.js",
+  "main": "lib/pellmell.js",
   "scripts": {
-    "test": "lab -vcCD test/index.js",
+    "test": "istanbul cover ./node_modules/lab/bin/lab --report lcovonly  -- -l  && codecov",
+    "test-all": "lab -vcCD",
     "test-watch": "fsmonitor -s -p '+*.js' npm test"
   },
   "repository": {
@@ -27,12 +28,15 @@
   "homepage": "https://github.com/hapipip/pellmell#readme",
   "devDependencies": {
     "code": "^3.0.2",
+    "codecov": "^1.0.1",
     "fsmonitor": "^0.2.4",
-    "lab": "^10.9.0"
+    "istanbul": "^0.4.5",
+    "lab": "^11.0.1"
   },
   "dependencies": {
     "joi": "^9.0.4",
-    "masks": "git+https://github.com/hapipip/masks#master",
+    "lodash.isplainobject": "^4.0.6",
+    "masks": "git+https://github.com/Gastonite/masks#master",
     "require-yml": "git+https://github.com/Gastonite/require-yml.git#master"
   },
   "engines": {
